@@ -1,27 +1,94 @@
-# Example
+# ThreeJS Object Controls Angular example
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+An example how to use threejs-object-controls module into your angular App!
 
-## Development server
+ThreeJS module that allows you to rotate an Object(mesh) independently from the rest of the scene, and to zoom in/out moving the camera.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[view live example]
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+npm install --save threejs-object-controls
+```
 
-## Build
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+import * as THREE from 'three';
+import {ObjectControls} from 'threeJS-object-controls';
+```
 
-## Running unit tests
+Create a new instance of Controls, passig 3 arguments:
+* camera
+* renderer element
+* the mesh to move
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+var controls = new ObjectControls(camera, renderer.domElement, myMesh);
+```
+look at app.component.ts to see an usage example.
 
-## Running end-to-end tests
+You can also change the mesh you want rotate! :tada:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+[view live example] and click the 'useMesh2' button on the right panel to interact with the second cube.  
 
-## Further help
+### Options
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+You can set different options like
+
+* rotation speed
+* zoom speed
+* min-max distance of the camera
+* mesh to rotate
+* enable disable axis rotations
+* set max rotation angle
+
+
+```
+controls.setDistance(8, 200); // set min - max distance for zoom
+
+controls.setZoomSpeed(1); // set zoom speed
+
+controls.enableVerticalRotation(); // enables the vertical rotation, see also disableVerticalRotation(), enableHorizontalRotation(), disableHorizontalRotation()
+
+controls.setMaxVerticalRotationAngle(Math.PI / 4, Math.PI / 4); // sets a max angle value for the rotation of the object, see also setMaxHorizontalRotationAngle(R,R)
+
+controls.disableMaxHorizontalAngleRotation()// disables rotation angle limits for horizontal rotation, see also disableMaxVerticalAngleRotation()
+
+controls.setRotationSpeed(0.05); // sets a new rotation speed for desktop, see also setRotationSpeedTouchDevices(value)
+
+Parameters details:
+
+rotationSpeed:
+ 1 => fast
+ 0.01 => slow
+```
+
+
+## Tips
+
+In case of problems with ts types required by threejs in a typescript project do the following:
+1) go to the tsconfig.json file
+2) add skipLibCheck: true in "compilerOptions" object.
+```
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "strict": true,
+        "target": "es5",
+        "declaration": true,
+        "declarationDir": "dist-debug/",
+        "skipLibCheck": true, /// Needs to be true to fix wrong alias types being used
+        ...
+    }
+```
+
+## Version
+1.2
+
+## License
+
+MIT
+
+[view live example]: <https://albertopiras.github.io/threeJS-object-controls/>

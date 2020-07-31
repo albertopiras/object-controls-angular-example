@@ -1,6 +1,6 @@
 {
-  "name": "example",
-  "version": "0.0.0",
+  "name": "object-controls-angular-example",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,7 +19,11 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "dat.gui": "^0.7.7",
     "rxjs": "~6.4.0",
+    "three": "^0.119.1",
+    "three-dat.gui": "^2.0.7",
+    "threejs-object-controls": "^1.2.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
@@ -28,9 +32,11 @@
     "@angular/cli": "~8.3.20",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "@types/offscreencanvas": "^2019.6.2",
+    "@types/webgl2": "0.0.5",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
